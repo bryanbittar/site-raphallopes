@@ -17,5 +17,12 @@ export function buildGalleryPaths({ folder, count }: GalleryConfig) {
   );
 }
 
-/** Used by the Hero slideshow. */
-export const weddingGallery = buildGalleryPaths(galleryConfigs.wedding);
+/**
+ * Used by the Hero slideshow. Landscape shots only — the hero band is wide
+ * and short, so portrait photos get cropped too tight there. The full set
+ * (including portraits) still appears in the Portfólio album below.
+ */
+const weddingHeroFrames = ["01", "02", "03", "06", "07", "08", "09", "11", "13"];
+export const weddingGallery = weddingHeroFrames.map(
+  (n) => `/images/gallery/${galleryConfigs.wedding.folder}/${n}.jpg`,
+);

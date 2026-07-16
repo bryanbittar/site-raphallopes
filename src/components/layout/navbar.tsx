@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -9,28 +11,34 @@ import { navItems } from "@/lib/data/nav";
 import { quoteWhatsAppLink, siteConfig } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
-export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [activeHref, setActiveHref] = useState("#home");
+export function Navbar({ alwaysDark = false }: { alwaysDark?: boolean } = {}) {
+  const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(alwaysDark);
+  const [activeHref, setActiveHref] = useState("/#home");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const isRouteActive = (href: string) =>
+    href.startsWith("/") && !href.startsWith("/#") && pathname.startsWith(href);
+
   useEffect(() => {
+    if (alwaysDark) return;
     const onScroll = () => setIsScrolled(window.scrollY > 64);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [alwaysDark]);
 
   useEffect(() => {
     const sections = navItems
-      .map((item) => document.querySelector(item.href))
+      .filter((item) => item.href.startsWith("/#"))
+      .map((item) => document.querySelector(item.href.slice(1)))
       .filter((el): el is Element => el !== null);
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveHref(`#${entry.target.id}`);
+            setActiveHref(`/#${entry.target.id}`);
           }
         });
       },
@@ -58,7 +66,7 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-6 lg:px-12">
-        <a href="#home" aria-label={siteConfig.name} className="shrink-0">
+        <Link href="/#home" aria-label={siteConfig.name} className="shrink-0">
           <Image
             src="/images/logo/raphael-lopes-logo-white.png"
             alt={siteConfig.name}
@@ -66,35 +74,76 @@ export function Navbar() {
             height={36}
             priority
             className={cn(
-              "h-8 w-auto transition-[filter] duration-500",
+              "h-12 w-auto transition-[filter] duration-500",
               isScrolled || isMenuOpen ? "invert" : "invert-0",
             )}
           />
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-9 lg:flex">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={cn(
-                "relative py-1 text-[0.72rem] font-medium uppercase tracking-[0.16em] transition-colors",
-                isScrolled ? "text-ink-soft hover:text-ink" : "text-white/80 hover:text-white",
-                activeHref === item.href && (isScrolled ? "text-ink" : "text-white"),
-              )}
-            >
-              {item.label}
-              {activeHref === item.href && (
-                <motion.span
-                  layoutId="nav-underline"
+          {navItems.map((item) =>
+            item.children ? (
+              <div key={item.href} className="group relative py-1">
+                <Link
+                  href={item.href}
                   className={cn(
-                    "absolute -bottom-1 left-0 right-0 h-px",
-                    isScrolled ? "bg-gold" : "bg-white",
+                    "relative text-[0.72rem] font-medium uppercase tracking-[0.16em] transition-colors",
+                    isScrolled ? "text-ink-soft hover:text-ink" : "text-white/80 hover:text-white",
+                    (activeHref === item.href || isRouteActive(item.href)) &&
+                      (isScrolled ? "text-ink" : "text-white"),
                   )}
-                />
-              )}
-            </a>
-          ))}
+                >
+                  {item.label}
+                  {(activeHref === item.href || isRouteActive(item.href)) && (
+                    <motion.span
+                      layoutId="nav-underline"
+                      className={cn(
+                        "absolute -bottom-1 left-0 right-0 h-px",
+                        isScrolled ? "bg-gold" : "bg-white",
+                      )}
+                    />
+                  )}
+                </Link>
+
+                <div className="invisible absolute left-1/2 top-full flex -translate-x-1/2 flex-col gap-1 pt-4 opacity-0 transition-[opacity,visibility] duration-200 group-hover:visible group-hover:opacity-100">
+                  <div className="min-w-44 border border-border bg-paper py-2 shadow-lg">
+                    {item.children.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className="block whitespace-nowrap px-5 py-2.5 text-[0.72rem] uppercase tracking-[0.14em] text-ink-soft transition-colors hover:bg-sand hover:text-ink"
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <a
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "relative py-1 text-[0.72rem] font-medium uppercase tracking-[0.16em] transition-colors",
+                  isScrolled ? "text-ink-soft hover:text-ink" : "text-white/80 hover:text-white",
+                  pathname === "/" &&
+                    activeHref === item.href &&
+                    (isScrolled ? "text-ink" : "text-white"),
+                )}
+              >
+                {item.label}
+                {pathname === "/" && activeHref === item.href && (
+                  <motion.span
+                    layoutId="nav-underline"
+                    className={cn(
+                      "absolute -bottom-1 left-0 right-0 h-px",
+                      isScrolled ? "bg-gold" : "bg-white",
+                    )}
+                  />
+                )}
+              </a>
+            ),
+          )}
         </nav>
 
         <div className="hidden lg:block">
@@ -137,13 +186,28 @@ export function Navbar() {
             <ul className="flex flex-col gap-1 px-6 pb-8 pt-2">
               {navItems.map((item) => (
                 <li key={item.href}>
-                  <a
+                  <Link
                     href={item.href}
                     onClick={() => setIsMenuOpen(false)}
                     className="block py-3 text-sm uppercase tracking-[0.14em] text-ink-soft"
                   >
                     {item.label}
-                  </a>
+                  </Link>
+                  {item.children && (
+                    <ul className="mb-1 flex flex-col gap-1 border-l border-border pl-4">
+                      {item.children.map((child) => (
+                        <li key={child.href}>
+                          <Link
+                            href={child.href}
+                            onClick={() => setIsMenuOpen(false)}
+                            className="block py-2 text-xs uppercase tracking-[0.14em] text-ink-faint"
+                          >
+                            {child.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </li>
               ))}
               <li className="pt-3">

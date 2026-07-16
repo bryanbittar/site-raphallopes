@@ -5,15 +5,13 @@ import { useSlideshow } from "@/components/motion/use-slideshow";
 import { weddingGallery } from "@/lib/data/galleries";
 
 export function Hero() {
-  const { ref, index, onMouseEnter, onMouseLeave } = useSlideshow(weddingGallery.length, 2000);
+  const { ref, index } = useSlideshow(weddingGallery.length, 3000);
 
   return (
     <section
       ref={ref}
       id="home"
       aria-label="Casamentos"
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
       className="relative flex h-[100svh] min-h-[640px] w-full items-center justify-center overflow-hidden bg-ink"
     >
       <PhotoSlideshow images={weddingGallery} index={index} altPrefix="Casamento" />

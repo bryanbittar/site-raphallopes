@@ -29,7 +29,7 @@ export function About() {
           <div className="relative aspect-[4/5] w-full overflow-hidden">
             <Image
               src="/images/about/raphael-lopes.jpg"
-              alt={`${siteConfig.name} fotografando com sua câmera`}
+              alt={`Retrato de ${siteConfig.name}`}
               fill
               sizes="(min-width: 1024px) 40vw, 100vw"
               className="object-cover"

@@ -9,8 +9,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
 import type { PortfolioItem } from "@/lib/data/portfolio";
@@ -69,7 +67,7 @@ export function CategoryCarousel({ title, items }: { title: string; items: Portf
                   type="button"
                   onClick={() => setActiveIndex(index)}
                   aria-label={`Ampliar foto: ${item.caption}`}
-                  className="relative block h-[60vh] w-full overflow-hidden bg-ink sm:h-[78vh]"
+                  className="relative block h-[60vh] w-full overflow-hidden bg-paper sm:h-[78vh]"
                 >
                   <Image
                     src={item.src}
@@ -77,24 +75,44 @@ export function CategoryCarousel({ title, items }: { title: string; items: Portf
                     fill
                     sizes="100vw"
                     quality={90}
-                    className="object-cover"
+                    className="object-contain"
                   />
                 </button>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="left-3 size-11 border-border bg-paper/90 sm:-left-4" />
-          <CarouselNext className="right-3 size-11 border-border bg-paper/90 sm:-right-4" />
         </Carousel>
 
-        <div className="mt-5 flex items-center justify-center gap-3 text-xs uppercase tracking-[0.14em] text-ink-faint">
-          <span style={{ fontVariantNumeric: "tabular-nums" }}>
+        <div className="mt-5 flex items-center justify-center gap-4 text-xs uppercase tracking-[0.14em] text-ink-faint">
+          <button
+            type="button"
+            onClick={() => api?.scrollPrev()}
+            aria-label="Foto anterior"
+            className="flex flex-1 max-w-32 items-center gap-2 text-ink-faint transition-colors hover:text-ink sm:max-w-48"
+          >
+            <span aria-hidden className="text-sm leading-none">
+              ←
+            </span>
+            <span className="h-px flex-1 bg-border" />
+          </button>
+
+          <span className="flex items-center gap-2 whitespace-nowrap" style={{ fontVariantNumeric: "tabular-nums" }}>
             {String(current + 1).padStart(2, "0")}
-          </span>
-          <span className="h-px w-8 bg-border" />
-          <span style={{ fontVariantNumeric: "tabular-nums" }}>
+            <span className="text-ink-faint/60">/</span>
             {String(items.length).padStart(2, "0")}
           </span>
+
+          <button
+            type="button"
+            onClick={() => api?.scrollNext()}
+            aria-label="Próxima foto"
+            className="flex flex-1 max-w-32 items-center gap-2 text-ink-faint transition-colors hover:text-ink sm:max-w-48"
+          >
+            <span className="h-px flex-1 bg-border" />
+            <span aria-hidden className="text-sm leading-none">
+              →
+            </span>
+          </button>
         </div>
       </Reveal>
 

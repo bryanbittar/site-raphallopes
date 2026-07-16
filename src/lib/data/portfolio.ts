@@ -17,3 +17,17 @@ function buildItems(config: GalleryConfig): PortfolioItem[] {
 export const weddingItems = buildItems(galleryConfigs.wedding);
 export const quinceaneraItems = buildItems(galleryConfigs.quinceanera);
 export const preWeddingItems = buildItems(galleryConfigs.preWedding);
+
+export const portfolioCategories = [
+  { slug: galleryConfigs.wedding.folder, title: galleryConfigs.wedding.label, items: weddingItems },
+  {
+    slug: galleryConfigs.quinceanera.folder,
+    title: galleryConfigs.quinceanera.label,
+    items: quinceaneraItems,
+  },
+  {
+    slug: galleryConfigs.preWedding.folder,
+    title: galleryConfigs.preWedding.label,
+    items: preWeddingItems,
+  },
+];
