@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -57,14 +58,18 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-6 lg:px-12">
-        <a
-          href="#home"
-          className={cn(
-            "font-display text-xl italic tracking-tight transition-colors",
-            isScrolled || isMenuOpen ? "text-ink" : "text-white",
-          )}
-        >
-          {siteConfig.name}
+        <a href="#home" aria-label={siteConfig.name} className="shrink-0">
+          <Image
+            src="/images/logo/raphael-lopes-logo-white.png"
+            alt={siteConfig.name}
+            width={141}
+            height={36}
+            priority
+            className={cn(
+              "h-8 w-auto transition-[filter] duration-500",
+              isScrolled || isMenuOpen ? "invert" : "invert-0",
+            )}
+          />
         </a>
 
         <nav className="hidden items-center gap-9 lg:flex">

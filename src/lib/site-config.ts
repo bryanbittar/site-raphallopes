@@ -11,8 +11,8 @@ export const siteConfig = {
   locale: "pt_BR",
 
   contact: {
-    whatsapp: "5567999999999",
-    whatsappDisplay: "+55 (67) 99999-9999",
+    whatsapp: "5567996641264",
+    whatsappDisplay: "+55 (67) 99664-1264",
     baseCity: "Campo Grande, Mato Grosso do Sul",
   },
 
@@ -23,7 +23,7 @@ export const siteConfig = {
     },
     youtube: {
       handle: "Raphael Lopes",
-      url: "https://www.youtube.com/@raphaellopesfotografia",
+      url: "https://www.youtube.com/@raphaellopes.fotografia",
     },
     facebook: {
       handle: "Raphael Lopes Fotografia",

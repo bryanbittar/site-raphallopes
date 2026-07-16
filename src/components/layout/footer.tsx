@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FacebookIcon, InstagramIcon, YoutubeIcon } from "@/components/icons/social";
 import { navItems } from "@/lib/data/nav";
 import { siteConfig } from "@/lib/site-config";
@@ -10,7 +11,13 @@ export function Footer() {
       <div className="mx-auto max-w-[1400px] px-6 py-16 lg:px-12">
         <div className="grid gap-12 md:grid-cols-3">
           <div>
-            <p className="font-display text-2xl italic text-white">{siteConfig.name}</p>
+            <Image
+              src="/images/logo/raphael-lopes-logo-white.png"
+              alt={siteConfig.name}
+              width={141}
+              height={36}
+              className="h-9 w-auto"
+            />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/50">
               {siteConfig.tagline}
             </p>

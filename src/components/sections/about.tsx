@@ -2,19 +2,23 @@ import Image from "next/image";
 import { Reveal } from "@/components/motion/reveal";
 import { siteConfig } from "@/lib/site-config";
 
-const paragraphs = [
-  {
-    heading: "O que me move",
-    body: "Comecei fotografando casamentos por acreditar em uma coisa simples: o dia em que duas pessoas escolhem uma à outra merece ser lembrado com verdade, não com poses ensaiadas. Depois de mais de 350 celebrações, essa continua sendo a única regra que sigo.",
-  },
-  {
-    heading: "Como eu vejo uma cena",
-    body: "Procuro o instante antes do sorriso, a mão que aperta a outra por baixo da mesa, o pai que respira fundo antes de entregar a filha no altar. São esses detalhes — não a pose — que fazem vocês revirem as fotos anos depois e sentirem tudo de novo.",
-  },
-  {
-    heading: "Por que destination weddings",
-    body: `Quando o casamento acontece longe de casa, cada detalhe pesa mais: a luz é nova, o tempo é curto, a logística é outra. Em ${siteConfig.credentials.yearsExperience} anos cobrindo cerimônias em ${siteConfig.credentials.statesServed}+ estados e ${siteConfig.credentials.continentsServed} continentes, aprendi a chegar preparado — para que vocês só precisem viver o dia.`,
-  },
+const introParagraphs = [
+  "Sou Raphael Lopes, fotógrafo de casamentos há 9 anos, com mais de 350 lindas histórias eternizadas em vários estados do Brasil e inclusive em Nova York e na Itália!",
+  "Nosso trabalho possui elementos e inspirações internacionais, mesclados com fotografia de moda, artística e atemporal.",
+  "Estamos sempre atentos à espontaneidade e emoção! Fazemos com que a fotografia, além de ser a lembrança do seu dia mais especial, seja algo agradável, leve e memorável!",
+];
+
+const workshops = [
+  "Wedding Brasil 2022",
+  "Photo in Rio 2023",
+  "Photo in Rio 2024",
+  "Making of 360 — Rodolfo Santos 2024",
+  "Expo Image 2025",
+  "Photo in Rio 2025",
+  "Fora da Zona de Conforto — Nei Bernardes 2026",
+  "Revolution Curitiba 2026",
+  "Casamentos Internacionais — Sam Sacramento",
+  "A Arte de Fotografar Noivas — Anderson Marques",
 ];
 
 export function About() {
@@ -36,22 +40,36 @@ export function About() {
         <div>
           <Reveal>
             <span className="eyebrow">Sobre o fotógrafo</span>
-            <h2 className="balance mt-4 max-w-xl font-display text-4xl italic leading-tight text-ink lg:text-5xl">
-              A história por trás de cada fotografia que eu faço.
-            </h2>
           </Reveal>
 
-          <div className="mt-12 flex flex-col gap-10">
-            {paragraphs.map((paragraph, index) => (
-              <Reveal key={paragraph.heading} delay={index * 0.05}>
-                <div className="border-l-2 border-gold/40 pl-6">
-                  <h3 className="font-display text-lg italic text-ink">{paragraph.heading}</h3>
-                  <p className="mt-3 max-w-2xl text-[0.95rem] leading-relaxed text-ink-soft">
-                    {paragraph.body}
+          <div className="mt-8 flex flex-col gap-10">
+            <Reveal>
+              <div className="flex flex-col gap-4">
+                {introParagraphs.map((paragraph) => (
+                  <p key={paragraph} className="max-w-2xl text-[0.95rem] leading-relaxed text-ink-soft">
+                    {paragraph}
                   </p>
-                </div>
-              </Reveal>
-            ))}
+                ))}
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.06}>
+              <div className="border-l-2 border-gold/40 pl-6">
+                <h3 className="font-display text-lg italic text-ink">Congressos e workshops</h3>
+                <p className="mt-3 max-w-2xl text-[0.95rem] leading-relaxed text-ink-soft">
+                  Participamos ativamente dos maiores congressos e workshops da América do Sul,
+                  sempre nos atualizando nos estudos, novidades e tendências:
+                </p>
+                <ul className="mt-4 flex max-w-2xl flex-col gap-2">
+                  {workshops.map((workshop) => (
+                    <li key={workshop} className="flex items-baseline gap-2.5 text-sm text-ink-soft">
+                      <span className="text-gold">—</span>
+                      {workshop}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
           </div>
         </div>
       </div>
