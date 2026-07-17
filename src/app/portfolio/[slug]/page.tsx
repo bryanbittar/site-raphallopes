@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Reveal } from "@/components/motion/reveal";
-import { CategoryCarousel } from "@/components/sections/category-carousel";
+import { CategoryThumbnailGrid } from "@/components/sections/category-thumbnail-grid";
 import { portfolioCategories } from "@/lib/data/portfolio";
 
 export function generateStaticParams() {
@@ -45,10 +45,13 @@ export default async function PortfolioCategoryPage({
           <div className="mx-auto max-w-[1400px] px-6 lg:px-12">
             <Reveal className="max-w-2xl">
               <span className="eyebrow">Portfólio</span>
+              <h1 className="balance mt-4 font-display text-4xl italic leading-tight text-ink lg:text-5xl">
+                {category.title}
+              </h1>
             </Reveal>
 
             <div className="mt-10">
-              <CategoryCarousel title={category.title} items={category.items} />
+              <CategoryThumbnailGrid items={category.items} />
             </div>
 
             <div className="mt-16 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-border pt-8">

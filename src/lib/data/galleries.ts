@@ -2,12 +2,24 @@ export type GalleryConfig = {
   folder: string;
   count: number;
   label: string;
+  /** 1-based frame numbers shot in portrait orientation (all others are landscape). */
+  portraitFrames: number[];
 };
 
 export const galleryConfigs = {
-  wedding: { folder: "casamento", count: 13, label: "Casamento" },
-  quinceanera: { folder: "festa-15-anos", count: 10, label: "15 Anos" },
-  preWedding: { folder: "pre-wedding", count: 12, label: "Pré Wedding" },
+  wedding: { folder: "casamento", count: 13, label: "Casamento", portraitFrames: [4, 5, 10, 12] },
+  quinceanera: {
+    folder: "festa-15-anos",
+    count: 10,
+    label: "15 Anos",
+    portraitFrames: [4, 8],
+  },
+  preWedding: {
+    folder: "pre-wedding",
+    count: 12,
+    label: "Pré Wedding",
+    portraitFrames: [1, 5],
+  },
 } as const satisfies Record<string, GalleryConfig>;
 
 export function buildGalleryPaths({ folder, count }: GalleryConfig) {
