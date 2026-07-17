@@ -33,7 +33,7 @@ export function Testimonials() {
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">Depoimentos</span>
           <h2 className="balance mt-4 font-display text-4xl italic leading-tight text-ink lg:text-5xl">
-            Depoimentos de quem viveu o dia mais importante.
+            O que nossos clientes dizem, quando recebem suas fotos!
           </h2>
         </Reveal>
 
