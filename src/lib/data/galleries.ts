@@ -21,7 +21,7 @@ export const galleryConfigs = {
   },
   preWedding: {
     folder: "pre-wedding",
-    count: 16,
+    count: 15,
     label: "Pré Wedding",
     portraitFrames: [1, 5],
   },
