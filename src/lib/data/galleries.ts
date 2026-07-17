@@ -7,7 +7,12 @@ export type GalleryConfig = {
 };
 
 export const galleryConfigs = {
-  wedding: { folder: "casamento", count: 13, label: "Casamento", portraitFrames: [4, 5, 10, 12] },
+  wedding: {
+    folder: "casamento",
+    count: 29,
+    label: "Casamento",
+    portraitFrames: [4, 5, 10, 12, 22, 25, 26],
+  },
   quinceanera: {
     folder: "festa-15-anos",
     count: 10,
