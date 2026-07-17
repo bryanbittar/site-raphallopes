@@ -27,7 +27,7 @@ export function PhotoSlideshow({
             priority={i === 0}
             sizes="100vw"
             quality={90}
-            className="object-contain sm:object-cover"
+            className="object-cover"
           />
         </div>
       ))}

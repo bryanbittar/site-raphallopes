@@ -26,7 +26,7 @@ export function Hero() {
       ref={ref}
       id="home"
       aria-label="Casamentos"
-      className="relative flex h-[100svh] min-h-[640px] w-full items-center justify-center overflow-hidden bg-ink"
+      className="relative flex aspect-[3/2] w-full items-center justify-center overflow-hidden bg-ink lg:aspect-auto lg:h-[100svh] lg:min-h-[640px]"
     >
       <PhotoSlideshow images={images} index={index} altPrefix="Casamento" />
       <div className="pointer-events-none absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-ink/45 to-transparent" />
