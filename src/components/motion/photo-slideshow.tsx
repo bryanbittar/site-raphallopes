@@ -20,18 +20,6 @@ export function PhotoSlideshow({
             i === index ? "opacity-100" : "opacity-0",
           )}
         >
-          {/* Blurred fill visible only on narrow/tall screens, where a landscape
-              photo can't cover the frame without cropping into the subject. */}
-          <Image
-            src={src}
-            alt=""
-            aria-hidden
-            fill
-            priority={i === 0}
-            sizes="100vw"
-            quality={90}
-            className="scale-110 object-cover object-center blur-2xl sm:hidden"
-          />
           <Image
             src={src}
             alt={`${altPrefix} — foto ${i + 1}`}
