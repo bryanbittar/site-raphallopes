@@ -15,13 +15,13 @@ export const galleryConfigs = {
   },
   quinceanera: {
     folder: "festa-15-anos",
-    count: 10,
+    count: 23,
     label: "15 Anos",
-    portraitFrames: [4, 8],
+    portraitFrames: [4, 8, 11, 12, 18, 21, 22],
   },
   preWedding: {
     folder: "pre-wedding",
-    count: 12,
+    count: 16,
     label: "Pré Wedding",
     portraitFrames: [1, 5],
   },
