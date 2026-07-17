@@ -6,7 +6,7 @@ export type GalleryConfig = {
 
 export const galleryConfigs = {
   wedding: { folder: "casamento", count: 13, label: "Casamento" },
-  quinceanera: { folder: "festa-15-anos", count: 10, label: "Festa de 15 Anos" },
+  quinceanera: { folder: "festa-15-anos", count: 10, label: "15 Anos" },
   preWedding: { folder: "pre-wedding", count: 12, label: "Pré Wedding" },
 } as const satisfies Record<string, GalleryConfig>;
 
