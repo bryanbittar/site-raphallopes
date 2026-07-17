@@ -39,7 +39,7 @@ export function About() {
 
         <div>
           <Reveal>
-            <span className="eyebrow">Sobre o fotógrafo</span>
+            <span className="eyebrow">Sobre mim</span>
           </Reveal>
 
           <div className="mt-8 flex flex-col gap-10">

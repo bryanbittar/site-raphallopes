@@ -11,7 +11,7 @@ export const galleryConfigs = {
     folder: "casamento",
     count: 32,
     label: "Casamento",
-    portraitFrames: [4, 10, 20, 23, 24],
+    portraitFrames: [4, 9, 19, 22, 23],
   },
   quinceanera: {
     folder: "festa-15-anos",
@@ -40,7 +40,7 @@ export function buildGalleryPaths({ folder, count }: GalleryConfig) {
  * (including portraits) still appears in the Portfólio album below.
  */
 const weddingHeroFrames = [
-  "01", "02", "03", "05", "06", "07", "08", "09", "11", "28", "29", "30", "31", "32",
+  "01", "02", "03", "05", "06", "07", "08", "10", "27", "28", "29", "30", "31", "32",
 ];
 export const weddingGallery = weddingHeroFrames.map(
   (n) => `/images/gallery/${galleryConfigs.wedding.folder}/${n}.jpg`,
