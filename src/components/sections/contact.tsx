@@ -33,8 +33,11 @@ export function Contact() {
         <Reveal className="mx-auto max-w-2xl text-center">
           <span className="eyebrow">Contato</span>
           <h2 className="balance mt-4 font-display text-4xl italic leading-tight text-ink lg:text-5xl">
-            Fale sobre o seu casamento. Eu respondo pessoalmente.
+            Seu dia especial, merece toda nossa dedicação e capricho!
           </h2>
+          <p className="mt-4 text-sm uppercase tracking-[0.14em] text-ink-faint">
+            Nos chame aqui para conversarmos!
+          </p>
         </Reveal>
 
         <RevealGroup
