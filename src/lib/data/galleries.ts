@@ -9,7 +9,7 @@ export type GalleryConfig = {
 export const galleryConfigs = {
   wedding: {
     folder: "casamento",
-    count: 27,
+    count: 30,
     label: "Casamento",
     portraitFrames: [4, 10, 20, 23, 24],
   },
@@ -39,7 +39,9 @@ export function buildGalleryPaths({ folder, count }: GalleryConfig) {
  * and short, so portrait photos get cropped too tight there. The full set
  * (including portraits) still appears in the Portfólio album below.
  */
-const weddingHeroFrames = ["01", "02", "03", "05", "06", "07", "08", "09", "11"];
+const weddingHeroFrames = [
+  "01", "02", "03", "05", "06", "07", "08", "09", "11", "28", "29", "30",
+];
 export const weddingGallery = weddingHeroFrames.map(
   (n) => `/images/gallery/${galleryConfigs.wedding.folder}/${n}.jpg`,
 );
