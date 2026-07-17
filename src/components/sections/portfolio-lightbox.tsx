@@ -34,8 +34,8 @@ export function PortfolioLightbox({
       if (event.key === "ArrowLeft")
         onIndexChange(((index as number) - 1 + items.length) % items.length);
     }
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    window.addEventListener("keydown", onKeyDown, true);
+    return () => window.removeEventListener("keydown", onKeyDown, true);
   }, [isOpen, index, items.length, onIndexChange]);
 
   return (
