@@ -54,6 +54,16 @@ export function Footer() {
               </li>
               <li>
                 <a
+                  href={siteConfig.social.instagram15Anos.url}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex items-center gap-2 transition-colors hover:text-white"
+                >
+                  <InstagramIcon className="size-4" /> {siteConfig.social.instagram15Anos.handle}
+                </a>
+              </li>
+              <li>
+                <a
                   href={siteConfig.social.youtube.url}
                   target="_blank"
                   rel="noreferrer noopener"

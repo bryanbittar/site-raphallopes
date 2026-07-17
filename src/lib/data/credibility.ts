@@ -11,6 +11,6 @@ export const credibilityItems: CredibilityItem[] = [
   { icon: CalendarClock, label: "9 anos de experiência" },
   { icon: Globe2, label: "Brasil · EUA · Europa" },
   { icon: Plane, label: "Destination weddings" },
-  { icon: BookOpen, label: "Fotografia documental" },
+  { icon: BookOpen, label: "Fotografia documental, artística e atemporal" },
   { icon: Users, label: "Atendimento personalizado" },
 ];

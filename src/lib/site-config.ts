@@ -21,6 +21,10 @@ export const siteConfig = {
       handle: "@raphaellopes.fotografia",
       url: "https://www.instagram.com/raphaellopes.fotografia",
     },
+    instagram15Anos: {
+      handle: "@raphaellopes.15anos",
+      url: "https://www.instagram.com/raphaellopes.15anos",
+    },
     youtube: {
       handle: "Raphael Lopes",
       url: "https://www.youtube.com/@raphaellopes.fotografia",

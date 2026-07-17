@@ -11,8 +11,13 @@ const channels = [
   },
   {
     icon: InstagramIcon,
-    label: "Instagram",
+    label: "Instagram Casamentos",
     href: siteConfig.social.instagram.url,
+  },
+  {
+    icon: InstagramIcon,
+    label: "Instagram 15 Anos",
+    href: siteConfig.social.instagram15Anos.url,
   },
   {
     icon: YoutubeIcon,
@@ -34,7 +39,7 @@ export function Contact() {
 
         <RevealGroup
           stagger={0.1}
-          className="mx-auto mt-14 grid max-w-3xl gap-5 sm:grid-cols-3"
+          className="mx-auto mt-14 grid max-w-3xl gap-5 grid-cols-2 lg:grid-cols-4"
         >
           {channels.map((channel) => (
             <RevealItem key={channel.label}>
