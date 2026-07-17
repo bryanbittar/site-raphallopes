@@ -18,9 +18,6 @@ export function Footer() {
               height={36}
               className="h-9 w-auto"
             />
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/50">
-              {siteConfig.tagline}
-            </p>
           </div>
 
           <div>
